@@ -1,0 +1,63 @@
+# Product Requirements
+
+## Global Navigation
+- Bottom Navigation Bar fixed at the bottom of the screen.
+- Navigation Items:
+  1. **Profile**: User profile and settings.
+  2. **History**: Log of past workouts.
+  3. **Start Workout**: Main action to begin a session.
+  4. **Exercises**: Library of exercises.
+- Active state should be clearly visible.
+- "Store" item from mocks should be EXCLUDED.
+
+## Screen: Profile
+- Display user information (Name, Avatar placeholder).
+- Summary statistics (e.g., Total workouts, Time spent).
+- Settings entry point (optional for MVP but good to have).
+
+## Screen: History
+- List of completed workouts ordered by date (newest first).
+- Each list item should show:
+  - Workout Name (or "Workout on [Date]")
+  - Date and Time
+  - Duration
+  - (Optional) Volume or PRs achieved.
+- Tapping a workout shows the Workout Details (read-only view of the session).
+
+## Screen: Start Workout
+- **Pre-workout state**:
+  - "Start Empty Workout" button.
+  - (Optional) List of saved routines to start from.
+- **Active Workout state** (referencing `start-workout.PNG`):
+  - Timer displaying elapsed time.
+  - Button to "Finish" or "Cancel" workout.
+  - List of exercises added to the current session.
+  - "Add Exercise" button to open a modal/screen to select exercises.
+  - For each exercise:
+    - Exercise Name.
+    - Sets list with columns: Set #, Previous (optional), kg (Weight), Reps, Status (Completed/Checked).
+    - Ability to add/remove sets.
+    - Swipe or button to remove exercise.
+
+## Screen: Exercises
+- (Referencing `exercises-list.PNG`)
+- List of all available exercises.
+- Search bar to filter exercises by name.
+- Filter by body part/category (if shown in mocks).
+- "Create Exercise" button (Floating Action Button or top bar).
+- Tapping an exercise opens the Exercise Details/Edit screen.
+
+## Screen: Exercise Details / Edit
+- (Referencing `exercise-edit.PNG`)
+- Fields to edit:
+  - Name
+  - Category (e.g., Push, Pull, Legs, or Body part).
+  - Notes/Instructions.
+- "Save" button to persist changes.
+- "Delete" button to remove exercise (with confirmation).
+
+## Design Guidelines
+- Mobile-first responsive design.
+- Clean, modern aesthetic.
+- Dark mode preferred (if mocks suggest it, otherwise standard clean UI).
+- Use Next.js for the framework.
