@@ -1,20 +1,40 @@
 :root {
+  /* Modern Color Palette */
   --background: #ffffff;
-  --foreground: #171717;
-  --primary: #2563eb;
+  --foreground: #0f172a; /* Slate 900 */
+  
+  --primary: #000000; /* Apple-style black primary */
   --primary-foreground: #ffffff;
-  --secondary: #f3f4f6;
-  --secondary-foreground: #1f2937;
-  --muted: #f3f4f6;
-  --muted-foreground: #6b7280;
-  --accent: #22c55e;
+  
+  --secondary: #f1f5f9; /* Slate 100 */
+  --secondary-foreground: #0f172a;
+  
+  --muted: #f8fafc; /* Slate 50 */
+  --muted-foreground: #475569; /* Slate 600 - Darker for better contrast */
+  
+  --accent: #2563eb; /* Blue 600 - Darker for better contrast */
   --accent-foreground: #ffffff;
-  --destructive: #ef4444;
+  
+  --destructive: #ef4444; /* Red 500 */
   --destructive-foreground: #ffffff;
-  --border: #e5e7eb;
-  --input: #e5e7eb;
-  --ring: #2563eb;
-  --radius: 0.5rem;
+  
+  --border: #e2e8f0; /* Slate 200 */
+  --input: #e2e8f0;
+  --ring: #0f172a;
+  
+  /* Design Tokens */
+  --radius: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  
+  --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Accessibility Tokens */
+  --min-touch-target: 48px;
 }
 
 * {
@@ -27,11 +47,12 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: var(--background);
+  background-color: var(--muted);
   color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px; /* Ensure base font size is large enough */
 }
 
 a {
@@ -41,10 +62,39 @@ a {
 
 /* Mobile-first container utility */
 .container {
-  padding: 1rem;
+  padding: 1.5rem;
   max-width: 600px;
   margin: 0 auto;
-  padding-bottom: 80px; /* Space for bottom nav */
+  padding-bottom: 120px; /* Increased space for bottom nav */
+  min-height: 100vh;
+}
+
+/* Typography Utilities */
+h1 {
+  font-size: 2.25rem; /* Larger headings */
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase; /* Glanceability */
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 1rem;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem; /* Prevent zooming on iOS */
+}
+
+/* Utility for glanceable text */
+.glanceable {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
 }
 
 @media (prefers-color-scheme: dark) {

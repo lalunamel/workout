@@ -2,23 +2,19 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { User, History, PlayCircle, Dumbbell } from 'lucide-react';
 import styles from './BottomNav.module.css';
 
 export default function BottomNav() {
   const pathname = usePathname();
 
   const navItems = [
-    { name: 'Profile', href: '/profile', icon: User },
-    { name: 'History', href: '/history', icon: History },
-    { name: 'Workouts', href: '/workouts', icon: PlayCircle },
-    { name: 'Exercises', href: '/exercises', icon: Dumbbell },
+    { name: 'Summary', href: '/summary', emoji: '📋' },
+    { name: 'Workouts', href: '/workouts', emoji: '💪' },
   ];
 
   return (
     <nav className={styles.nav}>
       {navItems.map((item) => {
-        const Icon = item.icon;
         const isActive = pathname === item.href;
         return (
           <Link
@@ -26,7 +22,9 @@ export default function BottomNav() {
             href={item.href}
             className={`${styles.link} ${isActive ? styles.active : ''}`}
           >
-            <Icon size={24} />
+            <div className={styles.iconContainer}>
+              <span style={{ fontSize: '24px', lineHeight: 1 }}>{item.emoji}</span>
+            </div>
             <span>{item.name}</span>
           </Link>
         );

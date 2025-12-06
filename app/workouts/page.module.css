@@ -1,65 +1,115 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   padding-top: 1rem;
-  padding-bottom: 100px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+.newButton {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .title {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
 }
 
 .timer {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 3.5rem; /* Larger timer */
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
+  letter-spacing: -0.05em;
+  line-height: 1;
 }
 
 .finishButton {
-  background-color: var(--accent);
-  color: var(--accent-foreground);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius);
-  font-weight: 600;
+  padding: 0 2rem;
+  height: 56px; /* Large touch target */
+  border-radius: var(--radius-full);
+  font-weight: 700;
   cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 1rem;
+}
+
+.finishButton:active {
+  transform: scale(0.95);
 }
 
 .emptyState {
   text-align: center;
   color: var(--muted-foreground);
-  margin-top: 2rem;
+  margin-top: 4rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .addExerciseButton {
-  background-color: var(--primary);
-  color: var(--primary-foreground);
-  border: none;
-  padding: 1rem;
-  border-radius: var(--radius);
-  font-weight: 600;
+  background-color: var(--background);
+  color: var(--primary);
+  border: 1px solid var(--border);
+  height: 56px; /* Large touch target */
+  border-radius: var(--radius-lg);
+  font-weight: 700;
   cursor: pointer;
   width: 100%;
   margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 1rem;
+}
+
+.addExerciseButton:active {
+  transform: scale(0.98);
+  background-color: var(--secondary);
 }
 
 .exerciseCard {
-  background-color: var(--secondary);
-  padding: 1rem;
-  border-radius: var(--radius);
+  background-color: var(--background);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
   position: relative;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
 }
 
 .exerciseHeader {
@@ -69,51 +119,68 @@
 }
 
 .exerciseName {
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
 }
 
 .setRow {
   display: grid;
-  grid-template-columns: 40px 1fr 1fr 40px;
-  gap: 0.5rem;
+  grid-template-columns: 48px 1fr 1fr 48px; /* Wider columns */
+  gap: 1rem;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .setHeader {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--muted-foreground);
   text-align: center;
-  margin-bottom: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .setNumber {
   text-align: center;
   color: var(--muted-foreground);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.1rem;
 }
 
 .input {
-  background-color: var(--background);
-  border: 1px solid var(--border);
+  background-color: var(--secondary);
+  border: 1px solid transparent;
   color: var(--foreground);
-  padding: 0.5rem;
+  height: 48px; /* Min touch target */
   border-radius: var(--radius);
   text-align: center;
   width: 100%;
+  font-weight: 700;
+  font-size: 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: var(--background);
 }
 
 .checkButton {
-  background-color: var(--muted);
+  background-color: var(--secondary);
   border: none;
   border-radius: var(--radius);
-  width: 32px;
-  height: 32px;
+  width: 48px; /* Min touch target */
+  height: 48px; /* Min touch target */
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   color: var(--muted-foreground);
+  transition: all 0.2s ease;
 }
 
 .checkButton.completed {
@@ -121,93 +188,35 @@
   color: var(--accent-foreground);
 }
 
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: flex-end;
-  z-index: 100;
-}
-
-.modalContent {
-  background-color: var(--background);
-  width: 100%;
-  max-height: 80vh;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  overflow-y: auto;
-}
-
-.modalHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.exerciseOption {
-  padding: 1rem;
-  border-bottom: 1px solid var(--border);
-  cursor: pointer;
-}
-
-.exerciseOption:last-child {
-  border-bottom: none;
-}
-
-/* Kebab Menu Styles */
-.menuContainer {
-  position: relative;
-}
-
-.menuButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--muted-foreground);
-  padding: 0.25rem;
-}
-
-.dropdownMenu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: var(--background);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  min-width: 120px;
-}
-
-.menuItem {
-  padding: 0.75rem 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--destructive);
-  font-size: 0.875rem;
-}
-
-.menuItem:hover {
-  background-color: var(--secondary);
-}
+/* Modal styles moved to Modal.module.css */
 
 .routineCard {
-  background-color: var(--secondary);
-  padding: 1rem;
-  border-radius: var(--radius);
+  background-color: var(--background);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
   cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.routineCard:active {
+  transform: scale(0.98);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
