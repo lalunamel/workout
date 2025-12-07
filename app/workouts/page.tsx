@@ -5,7 +5,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useWorkoutStore, Exercise, Set, ExerciseDefinition, Routine } from '../hooks/useWorkoutStore';
 import styles from './page.module.css';
 
-export default function WorkoutsPage() {
+import { Suspense } from 'react';
+
+function WorkoutsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const routineId = searchParams.get('routineId');
@@ -194,5 +196,13 @@ export default function WorkoutsPage() {
         Finish Workout
       </button>
     </div>
+  );
+}
+
+export default function WorkoutsPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <WorkoutsContent />
+    </Suspense>
   );
 }
